@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>オリジナルピザメーカー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>*模擬授業用*オリジナルピザメーカー🍕</h1>
+
+  <div id="workspace">
+    <canvas id="pizzaCanvas" width="600" height="600"></canvas>
+  </div>
+
+  <div id="materials">
+    <div class="ingredient-item">
+      <img src="images/basil.png" class="ingredient" draggable="true">
+      <span>basil</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/beans.png" class="ingredient" draggable="true">
+      <span>beans</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/broccoli.png" class="ingredient" draggable="true">
+      <span>broccoli</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/carrot.png" class="ingredient" draggable="true">
+      <span>carrot</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/cheese.png" class="ingredient" draggable="true">
+      <span>cheese</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/corn.png" class="ingredient" draggable="true">
+      <span>corn</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/green pepper.png" class="ingredient" draggable="true">
+      <span>green pepper</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/mini tomato.png" class="ingredient" draggable="true">
+      <span>mini tomato</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/mushroom.png" class="ingredient" draggable="true">
+      <span>mushroom</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/pineapple.png" class="ingredient" draggable="true">
+      <span>pineapple</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/potato.png" class="ingredient" draggable="true">
+      <span>potato</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/pumpkin.png" class="ingredient" draggable="true">
+      <span>pumpkin</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/salami.png" class="ingredient" draggable="true">
+      <span>salami</span>
+    </div>
+    <div class="ingredient-item">
+      <img src="images/tomato.png" class="ingredient" draggable="true">
+      <span>tomato</span>
+    </div>
+  
+  </div>
+
+  <div class="control-group">
+    <h3>操作</h3>
+    <div class="button-grid">
+      <button id="upBtn">↑</button>
+      <button id="downBtn">↓</button>
+      <button id="leftBtn">←</button>
+      <button id="rightBtn">→</button>
+      <button id="biggerBtn">大きく</button>
+      <button id="smallerBtn">小さく</button>
+      <button id="rotateBtn">回転</button>
+      <button id="flipXBtn">左右反転</button>
+      <button id="flipYBtn">上下反転</button>
+      <button id="deleteBtn">削除</button>
+      <button id="toFrontBtn">前面へ</button>
+      <button id="toBackBtn">背面へ</button>
+      <button id="lockBtn">ロック</button>
+      <button id="unlockBtn">解除</button>
+      <button id="resetBtn">リセット</button>
+      <button id="undoBtn">戻る</button>
+      <button id="duplicateBtn">複製</button>
+
+      <button id="exportBtn">エクスポート（PNG）</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+#materials {
+  display: flex;
+  flex-wrap: wrap;      /* 折り返し表示 */
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.ingredient-item {
+  width: 120px;         /* 大きめに */
+  text-align: center;
+}
+
+.ingredient-item img {
+  width: 100px;         /* 素材画像を大きく */
+  height: 100px;
+  object-fit: contain;
+  cursor: grab;
+}
+
+.ingredient-item span {
+  display: block;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.ingredient {
+  width: 80px;
+  flex-shrink: 0;
+}
+#workspace {
+  margin: 20px auto;
+  border: 4px dashed #d2691e; 
+  border-radius: 10px;        
+  width: 600px;
+  height: 600px;
+  background-color: #fff8dc;  
+  position: relative;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2); 
+  padding: 0;
+}
+#editMenu {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+#editMenu button {
+  padding: 15px 25px;       
+  font-size: 18px;          
+  border-radius: 10px;      
+  border: 2px solid #d2691e;
+  background-color: #ffe4b5;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#editMenu button:hover {
+  background-color: #ffdead;
+}
+#pizzaCanvas {
+  width: 600px;
+  height: 600px;
+  touch-action: none;
+  display: block;
+}
+
+canvas {
+  -webkit-user-select: none;
+  user-select: none;
+}
+/* グループ化用の共通枠 */
+.control-group {
+  margin: 20px auto;
+  padding: 15px;
+  width: 90%;
+  max-width: 600px;
+  border: 3px solid #d2691e;
+  border-radius: 12px;
+  background-color: #fff7e0;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.control-group h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #d2691e;
+  text-align: center;
+}
+
+/* グループ内のボタン */
+.control-group button {
+  padding: 12px 18px;
+  margin: 6px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #d2691e;
+  background-color: #ffe4b5;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.control-group button:hover {
+  background-color: #ffdead;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 5px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.button-grid button {
+  padding: 25px;
+  font-size: 28px;
+  border-radius: 10px;
+  border: 2px solid #d2691e;
+  background-color: #ffe4b5;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button-grid button:hover {
+  background-color: #ffdead;
+}
