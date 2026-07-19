@@ -198,7 +198,7 @@ longPressButtons.forEach(btn => {
   });
 
   btn.addEventListener("mouseup", () => {
-    stopAllActions();   // ★ PCでも必須
+    stopAllActions();   
   });
 });
 
@@ -213,7 +213,7 @@ document.getElementById("duplicateBtn").addEventListener("click", () => {
 
   const newItem = {
     img,
-    x: selectedItem.x + 20,   // 少しずらす
+    x: selectedItem.x + 20,   
     y: selectedItem.y + 20,
     size: selectedItem.size,
     angle: selectedItem.angle,
@@ -253,7 +253,6 @@ function undo() {
     const img = new Image();
     img.src = item.imgSrc;
 
-    // ★ baseImg はロード済みなので loadedCount++ する
     if (img.complete) {
       loadedCount++;
     } else {
@@ -332,11 +331,10 @@ document.getElementById("toFrontBtn").addEventListener("click", () => {
 
 document.getElementById("toBackBtn").addEventListener("click", () => {
   if (!selectedItem) return;
-  if (selectedItem.img.src.includes("pizza.png")) return; // ★ 土台は動かさない
+  if (selectedItem.img.src.includes("pizza.png")) return; 
 
   items = items.filter(i => i !== selectedItem);
 
-  // ★ 土台の直後（index 1）に入れる
   items.splice(1, 0, selectedItem);
 
   redraw();
@@ -386,9 +384,9 @@ canvas.addEventListener("mousedown", e => {
   const y = e.offsetY;
 
   selectedItem = getItemAt(x, y);
-if (!selectedItem) return;   // ← 触った瞬間に選択確定
+if (!selectedItem) return;   
 
-bringToFront(selectedItem);  // ← 触った素材を最前面へ
+bringToFront(selectedItem);  
 
 const h = getHandleAt(selectedItem, x, y);
 if (h) {
@@ -517,7 +515,7 @@ function redraw() {
     ctx.restore();
   });
 
-  // 選択枠＋ハンドル（正しい位置）
+  // 選択枠＋ハンドル
   if (selectedItem) {
     ctx.save();
     ctx.translate(selectedItem.x, selectedItem.y);
@@ -619,8 +617,7 @@ function getItemAt(x, y) {
 }
 
 function bringToFront(item) {
-  if (item.img.src.includes("pizza.png")) return; // ★ 土台は動かさない
-
+  if (item.img.src.includes("pizza.png")) return; 
   items = items.filter(i => i !== item);
   items.push(item);
 }
@@ -700,7 +697,7 @@ document.addEventListener("keydown", e => {
 })
   //キーバインド
 
- const keyState = {}; // 移動とサイズ変更だけに使う
+ const keyState = {}; 
 
 document.addEventListener("keydown", e => {
   if (!selectedItem) return;
@@ -715,10 +712,10 @@ document.addEventListener("keydown", e => {
     return;
   }
 
-  // --- ロック中は他の操作禁止 ---
+  // --- ロック中の操作禁止 ---
   if (lockedItems.has(selectedItem)) return;
 
-  // --- Deleteキーで削除 ---
+  // --- 削除 ---
   if (e.key === "Delete" || e.key === "Backspace") {
     saveHistory();
     items = items.filter(item => item !== selectedItem);
@@ -727,14 +724,13 @@ document.addEventListener("keydown", e => {
     return;
   }
 
-  // --- 移動（WASD）だけ keyState を使う ---
+  // --- 移動
   if (["w", "a", "s", "d"].includes(e.key)) {
 
     if (!keyState[e.key]) {
-      keyState[e.key] = true; // 最初の1回だけ暴走防止
+      keyState[e.key] = true;
     }
 
-    // 長押しは普通に連打させる
     if (e.key === "w") selectedItem.y -= speed;
     if (e.key === "s") selectedItem.y += speed;
     if (e.key === "a") selectedItem.x -= speed;
@@ -768,11 +764,11 @@ document.addEventListener("keydown", e => {
     return;
   }
 
-  // --- サイズ変更（1 / 2）だけ keyState を使う ---
+  // --- サイズ変更 ---
   if (["1", "2"].includes(e.key)) {
 
     if (!keyState[e.key]) {
-      keyState[e.key] = true; // 最初の1回だけ暴走防止
+      keyState[e.key] = true; 
     }
 
     if (e.key === "1") selectedItem.size += 5;
@@ -787,9 +783,9 @@ document.addEventListener("keydown", e => {
     return;
   }
 
-  // --- Z（何か割り当てたいならここ） ---
+  // --- 背面 ---
   if (e.key === "z") {
-    // ここに処理を書く
+    gobackBtn();
     return;
   }
 
@@ -808,7 +804,6 @@ document.addEventListener("keydown", e => {
   if (moved) redraw();
 });
 
-// ★ keyState は WASD と 1/2 だけ解除する
 document.addEventListener("keyup", e => {
   if (["w", "a", "s", "d", "1", "2"].includes(e.key)) {
     keyState[e.key] = false;
