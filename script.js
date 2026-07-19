@@ -176,7 +176,7 @@ longPressButtons.forEach(btn => {
   // タッチ終了（長押し停止）
   btn.addEventListener("touchend", e => {
     clearTimeout(pressTimer);
-    stopAllActions();   // ★ これが必須！
+    stopAllActions();   
     e.preventDefault();
   });
 
@@ -331,10 +331,11 @@ document.getElementById("toFrontBtn").addEventListener("click", () => {
 
 document.getElementById("toBackBtn").addEventListener("click", () => {
   if (!selectedItem) return;
-  if (selectedItem.img.src.includes("pizza.png")) return; 
+  if (selectedItem.img.src.includes("pizza.png")) return; // 
 
   items = items.filter(i => i !== selectedItem);
 
+  // ★ 土台の直後（index 1）に入れる
   items.splice(1, 0, selectedItem);
 
   redraw();
@@ -618,6 +619,7 @@ function getItemAt(x, y) {
 
 function bringToFront(item) {
   if (item.img.src.includes("pizza.png")) return; 
+
   items = items.filter(i => i !== item);
   items.push(item);
 }
@@ -697,7 +699,7 @@ document.addEventListener("keydown", e => {
 })
   //キーバインド
 
- const keyState = {}; 
+ const keyState = {};
 
 document.addEventListener("keydown", e => {
   if (!selectedItem) return;
@@ -712,7 +714,6 @@ document.addEventListener("keydown", e => {
     return;
   }
 
-  // --- ロック中の操作禁止 ---
   if (lockedItems.has(selectedItem)) return;
 
   // --- 削除 ---
@@ -728,7 +729,7 @@ document.addEventListener("keydown", e => {
   if (["w", "a", "s", "d"].includes(e.key)) {
 
     if (!keyState[e.key]) {
-      keyState[e.key] = true;
+      keyState[e.key] = true; 
     }
 
     if (e.key === "w") selectedItem.y -= speed;
@@ -764,7 +765,7 @@ document.addEventListener("keydown", e => {
     return;
   }
 
-  // --- サイズ変更 ---
+  // --- サイズ変更
   if (["1", "2"].includes(e.key)) {
 
     if (!keyState[e.key]) {
@@ -783,9 +784,8 @@ document.addEventListener("keydown", e => {
     return;
   }
 
-  // --- 背面 ---
   if (e.key === "z") {
-    gobackBtn();
+    tobackBtn();
     return;
   }
 
